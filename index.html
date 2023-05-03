@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Registration Form</title>
+
+<!--CSS-->
+<style>
+    /* Center the container */
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    
+    /* Style the form */
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      border: 5px solid #ccc;
+      border-radius: 10px;
+    }
+    
+    /* Style the input fields */
+    input[type="text"], input[type="email"], input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    
+    /* Style the submit button */
+    input[type="submit"] {
+      background-color: #688869;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+
+  <!--CSS END-->
+  
+<!-- Bootstrap 5 CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css">
+</head>
+<body>
+
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+    <form class="col-lg-6 col-md-8 col-sm-10 col-12">
+    <h1 class="mb-3 text-center">Registration</h1>
+    <br>
+    <div class="mb-3">
+    <label for="username" class="form-label">Username</label>
+    <input type="text" class="form-control" id="Username">
+    </div>
+    <div class="mb-3">
+    <label for="email" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="Email">
+    </div>
+    <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input type="password" class="form-control" id="Password">
+    </div>
+    <div class="mb-3">
+    <label for="confirm-password" class="form-label">Confirm Password</label>
+    <input type="password" class="form-control" id="ConfirmPassword">
+    </div>
+    <button type="button" class="btn btn-dark d-block mx-auto" id="press">Submit</button>
+    </form>
+    </div>
+
+
+<!--Sir Aries FIREBASE-->
+ <script type="module">
+ // Import the functions you need from the SDKs you need
+ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
+ // TODO: Add SDKs for Firebase products that you want to use
+ // https://firebase.google.com/docs/web/setup#available-libraries
+
+ // Your web app's Firebase configuration
+ const firebaseConfig = {
+ apiKey: "AIzaSyDnSa7iBpz00w_okpzApS0y-jsDfH7-EL8",
+ authDomain: "crud2-5af9c.firebaseapp.com",
+ databaseURL: "https://crud2-5af9c-default-rtdb.firebaseio.com",
+ projectId: "crud2-5af9c",
+ storageBucket: "crud2-5af9c.appspot.com",
+ messagingSenderId: "605127338511",
+ appId: "1:605127338511:web:b7b3cf0285fcb5cb04517a"
+ };
+
+ // Initialize Firebase
+ const app = initializeApp(firebaseConfig);
+
+
+
+
+// references
+
+
+
+import {getDatabase, ref, set, child, update, remove, get}
+ from "https://www.gstatic.com/firebasejs/9.20.0/firebase-database.js"
+
+
+
+ const db = getDatabase();
+
+
+ // references
+
+
+
+ var user = document.getElementById("Username");
+ var eml = document.getElementById("Email");
+ var passw = document.getElementById("Password");
+ var cnfpassw = document.getElementById("ConfirmPassword");
+
+
+
+ var insBtn = document.getElementById("press");
+
+
+
+ // add data function
+
+
+
+ function RegisterData() {
+ set(ref(db, "Ello/" + Username.value), {
+
+
+
+ Username: user.value,
+ Email: eml.value,
+ Password: passw.value,
+ ConfirmPassword: cnfpassw.value,
+ })
+ .then(() => {
+ alert("data stored succesfully");
+ })
+ .catch((error) => {
+ alert("unsuccesful, error" + error);
+ });
+ }
+
+
+
+
+ // Aasign event button
+ insBtn.addEventListener("click", RegisterData);
+
+
+
+ </script>
+</body>
+</html>
